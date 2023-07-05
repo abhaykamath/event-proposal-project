@@ -5,16 +5,9 @@ const { match } = require("../utils/passHash");
 const sendResponse = (account, password, res) => {
   if (account.length) {
     if (match(password, account[0].password)) {
-      if (account[0].account_type === "USER") {
-        res.json({
-          token: generateToken(account[0]._id),
-          proposals: account[0].proposals,
-        });
-      } else {
-        res.json({
-          token: generateToken(account[0]._id),
-        });
-      }
+      res.json({
+        token: generateToken(account[0]._id),
+      });
     } else {
       res.status(401).json({ message: "wrong password" });
     }
