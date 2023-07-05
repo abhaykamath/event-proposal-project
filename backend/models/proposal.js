@@ -8,7 +8,7 @@ const proposalSchema = new Schema({
   event_place: { type: String, required: true },
   proposal_type: { type: String, required: true },
   event_type: { type: String, required: true },
-  budget:{type: String, required: true},
+  budget: { type: String, required: true },
   event_from_date: { type: String },
   event_to_date: { type: String },
   description: { type: String },
