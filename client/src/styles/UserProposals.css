@@ -1,0 +1,18 @@
+.user-proposals-container {
+    box-sizing: border-box;
+    padding: 2rem 5rem;
+}
+
+.all-proposals-header {
+    box-sizing: border-box;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.all-proposals-grid {
+    box-sizing: border-box;
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
+    gap: 2rem;
+}
