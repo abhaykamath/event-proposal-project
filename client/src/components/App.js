@@ -5,6 +5,8 @@ import Navbar from "./Navbar";
 import UserDashboard from "../pages/UserDashboard";
 import ViewProposal from "./ViewProposal";
 import UserProposals from "./UserProposals";
+import Home from "../pages/Home";
+import VendorDashboardDummy from "../pages/VendorDashboardDummy";
 
 const img_url =
   "https://plus.unsplash.com/premium_photo-1664790560155-eeef67a1e77c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8ZXZlbnR8ZW58MHwwfDB8fHww&auto=format&fit=crop&w=500&q=60";
@@ -29,6 +31,8 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
+          <Route path="home" element={<Home />} />
+          <Route path="vendor-dashboard" element={<VendorDashboardDummy />} />
           <Route path="user-dashboard" element={<UserDashboard />}>
             <Route
               path=""

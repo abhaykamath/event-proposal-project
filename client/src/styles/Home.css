@@ -1,0 +1,31 @@
+.home-container {
+  box-sizing: border-box;
+  background-image: url("https://images.unsplash.com/photo-1624436048867-3cab158ec71b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+}
+
+.home-container h1 {
+  margin: 0;
+}
+
+.home-left-pane {
+  box-sizing: border-box;
+  display: flex;
+  width: 50%;
+  padding-left: 7rem;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+  font-size: 1.75rem;
+}
+
+.home-right-pane {
+  box-sizing: border-box;
+  display: flex;
+  width: 50%;
+  justify-content: center;
+  align-items: center;
+}

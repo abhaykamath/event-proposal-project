@@ -1,5 +1,17 @@
 const accountModel = require("../models/account");
 
+const getMyDetails = async (req, res) => {
+  try {
+    res.json({
+      details: req.user,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+};
+
 const getUserSelection = async (req, res) => {
   try {
     const proposals = req.user.proposals;
@@ -28,4 +40,4 @@ const updateUserSelection = async (req, res) => {
   }
 };
 
-module.exports = { updateUserSelection, getUserSelection };
+module.exports = { updateUserSelection, getUserSelection, getMyDetails };
