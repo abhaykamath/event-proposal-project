@@ -18,13 +18,21 @@ const sendResponse = (account, password, res) => {
 
 const login = async (req, res) => {
   try {
-    const { identifier_type, identifier, password } = req.body;
+    const { accountType, identifier_type, identifier, password } = req.body;
     if (identifier_type === "contact") {
       const account = await accountModel.find({ contact: identifier });
-      sendResponse(account, password, res);
+      if (accountType !== account[0].account_type) {
+        res.status(400).json({ message: "user not found" });
+      } else {
+        sendResponse(account, password, res);
+      }
     } else if (identifier_type === "email") {
       const account = await accountModel.find({ email: identifier });
-      sendResponse(account, password, res);
+      if (accountType !== account[0].account_type) {
+        res.status(400).json({ message: "user not found" });
+      } else {
+        sendResponse(account, password, res);
+      }
     } else {
       res.status(400).json({
         message: "invalid identifier",
