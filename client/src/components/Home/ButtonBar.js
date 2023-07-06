@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import login from "../../utils/login";
 import register from "../../utils/register";
 import { useAccountInfo } from "../../contexts/accountContext";
 import "../../styles/Home/ButtonBar.css";
 import { useNavigate } from "react-router";
+import Loader from "../Loader";
 
 function ButtonBar({
   view,
@@ -17,6 +18,7 @@ function ButtonBar({
   confirmPasswordRef,
   setDefaultView,
 }) {
+  const [loading, setLoading] = useState(false);
   const context = useAccountInfo();
   const navigate = useNavigate();
 
@@ -52,16 +54,18 @@ function ButtonBar({
 
       {view === "login" ? (
         <button
+          id="login-bar-button"
           onClick={() => {
+            setLoading(true);
             const payload = [
               accountType,
               usernameRef.current.value,
               passwordRef.current.value,
             ];
-            login(...payload, navigate, context);
+            login(...payload, navigate, context, setLoading);
           }}
         >
-          LOGIN
+          {loading ? <Loader /> : "LOGIN"}
         </button>
       ) : (
         <button

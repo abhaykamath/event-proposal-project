@@ -17,10 +17,23 @@
   gap: 0.5rem;
 }
 
+.top-bar button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.selected-alert {
+  background-color: #34a853;
+  color: white;
+  padding: 0 0.5rem;
+  border-radius: 0.25rem;
+}
+
 .proposal-desc-grid {
   box-sizing: border-box;
   display: grid;
-  grid-template-columns: 2fr 4fr 4fr;
+  grid-template-columns: 3fr 4fr 4fr;
   gap: 2rem;
 }
 
@@ -63,15 +76,16 @@
 }
 
 .label {
-    font-size: 0.75rem;
-    color: #898989;
+  font-size: 0.75rem;
+  color: #898989;
 }
 
 .proposal-timeline {
   box-sizing: border-box;
   display: flex;
-  justify-content: space-between;
-  font-size: 0.85rem;
+  /* justify-content: space-between; */
+  font-size: 0.95rem;
+  gap: 1.5rem;
 }
 
 .event-specs {
@@ -81,17 +95,17 @@
 }
 
 .event-specs > div {
-    width: 40%;
+  width: 30%;
 }
 
 .proposal-desc-grid-event-spec-type {
-    font-size: 0.75rem;
+  font-size: 0.75rem;
 }
 
 .proposal-desc-grid-event-type-value {
-    box-sizing: border-box;
-    padding: 0 0.5rem;
-    background-color: #D9ECFF;
-    color: #006BD9;
-    font-weight: bold;
+  box-sizing: border-box;
+  padding: 0 0.5rem;
+  background-color: #d9ecff;
+  color: #006bd9;
+  font-weight: bold;
 }
