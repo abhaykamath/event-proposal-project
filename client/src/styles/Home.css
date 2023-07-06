@@ -15,11 +15,12 @@
   box-sizing: border-box;
   display: flex;
   width: 50%;
-  padding-left: 7rem;
+  padding-left: 9rem;
   flex-direction: column;
   justify-content: center;
   color: white;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
+  line-height: 5rem;
 }
 
 .home-right-pane {

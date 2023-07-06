@@ -39,3 +39,7 @@
 .sign-container .button-bar button:active {
   opacity: 0.75;
 }
+
+#login-bar-button {
+  display: flex;
+}

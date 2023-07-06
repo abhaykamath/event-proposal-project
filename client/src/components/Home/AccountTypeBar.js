@@ -7,7 +7,8 @@ function AccountTypeBar({ accountType, setAccountType }) {
       <div
         style={{
           fontWeight: accountType === "vendor" ? "bold" : "normal",
-          color: accountType === "vendor" ? "#4285f4" : "black",
+          color: accountType === "vendor" ? "white" : "black",
+          backgroundColor: accountType === "vendor" ? "#4285f4" : ""
         }}
         className="account-type account-type-vendor"
         onClick={() => {
@@ -16,11 +17,12 @@ function AccountTypeBar({ accountType, setAccountType }) {
       >
         Vendor
       </div>
-      <div className="wall"></div>
+      {/* <div className="wall"></div> */}
       <div
         style={{
           fontWeight: accountType === "user" ? "bold" : "normal",
-          color: accountType === "user" ? "#4285f4" : "black",
+          color: accountType === "user" ? "white" : "black",
+          backgroundColor: accountType === "user" ? "#4285f4" : ""
         }}
         className="account-type account-type-user"
         onClick={() => {

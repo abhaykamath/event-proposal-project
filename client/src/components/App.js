@@ -4,7 +4,7 @@ import "../styles/App.css";
 import Navbar from "./Navbar";
 import UserDashboard from "../pages/UserDashboard";
 import ViewProposal from "./ViewProposal";
-import UserProposals from "./UserProposals";
+import UserProposals from "./UserDashboard/UserProposals";
 import Home from "../pages/Home";
 import VendorDashboardDummy from "../pages/VendorDashboardDummy";
 
@@ -34,19 +34,8 @@ function App() {
           <Route path="home" element={<Home />} />
           <Route path="vendor-dashboard" element={<VendorDashboardDummy />} />
           <Route path="user-dashboard" element={<UserDashboard />}>
-            <Route
-              path=""
-              element={
-                <UserProposals
-                  proposals={proposals}
-                  setProposalToView={setProposalToView}
-                />
-              }
-            />
-            <Route
-              path="view-proposal/:id"
-              element={<ViewProposal proposalToView={proposalToView} />}
-            />
+            <Route path="" element={<UserProposals />} />
+            <Route path="view-proposal/:id" element={<ViewProposal />} />
           </Route>
           <Route path="*" element={<h1>Page Not Found</h1>} />
         </Routes>

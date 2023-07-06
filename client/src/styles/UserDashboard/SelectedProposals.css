@@ -1,15 +1,16 @@
-.user-proposals-container {
+.user-selected-proposals-container {
   box-sizing: border-box;
   padding: 2rem 8rem;
+  padding-bottom: 0;
 }
 
-.all-proposals-header {
+.selected-proposals-header {
   box-sizing: border-box;
   font-size: 1.25rem;
   font-weight: bold;
 }
 
-.all-proposals-grid {
+.selected-proposals-grid {
   box-sizing: border-box;
   margin-top: 2rem;
   display: grid;
