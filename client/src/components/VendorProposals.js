@@ -65,6 +65,7 @@ function VendorProposals() {
       });
 
       document.getElementById("modal-close-btn").click();
+      window.location.reload(true);
     } catch (e) {
       console.log(e.message);
     }
@@ -105,6 +106,7 @@ function VendorProposals() {
         },
       });
       document.getElementById("modal-close-btn").click();
+      window.location.reload(true);
     } catch (e) {
       console.log(e.message);
     }
