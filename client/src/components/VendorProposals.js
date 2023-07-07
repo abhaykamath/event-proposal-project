@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import "../styles/VendorProposals.css";
 import VendorProposalTile from "./VendorProposalTile";
 import CreateProposal from "./CreateProposal";
+import Loader from "./Loader";
 import { useOutletContext } from "react-router-dom";
 import { useAccountInfo } from "../contexts/accountContext";
 import axios from "axios";
@@ -14,7 +15,7 @@ function VendorProposals() {
   const { proposals } = useOutletContext();
   const [btnname, setbtnname] = useState("Add");
   const [createimg, setcreateimg] = useState([]);
-  const [editproposal,setEditProposal]=useState([]);
+  const [editproposal, setEditProposal] = useState([]);
   const event_name_ref = useRef(null);
   const event_place_ref = useRef(null);
   const proposal_type_ref = useRef(null);
@@ -172,7 +173,7 @@ function VendorProposals() {
                     // else{editproposalindb();}
                   }}
                 >
-                  {btnname}
+                  {btnname} {<Loader />}
                 </button>
               </div>
             </div>

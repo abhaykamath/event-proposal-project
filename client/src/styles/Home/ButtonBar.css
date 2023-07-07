@@ -29,7 +29,7 @@
   padding: 0.5rem 1rem;
   background-color: #4285f4;
   color: white;
-  opacity: 0.65;
+  opacity: 0.8;
 }
 
 .sign-container .button-bar button:hover {
@@ -37,7 +37,7 @@
 }
 
 .sign-container .button-bar button:active {
-  opacity: 0.75;
+  opacity: 0.9;
 }
 
 #login-bar-button {

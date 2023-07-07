@@ -15,7 +15,14 @@ function ProposalTile({ proposal, setProposalToView, selected }) {
       }}
     >
       <div className="proposal-thumbnail-container">
-        <img src={images[0]} alt="proposal-thumbnail" />
+        <img
+          src={
+            images[0]
+              ? images[0]
+              : "https://www.suffolk.com/wp-content/themes/suffolk-theme/img/default-img.jpg"
+          }
+          alt="proposal-thumbnail"
+        />
       </div>
       <div className="tile-info">
         <div>{vendor_name}</div>

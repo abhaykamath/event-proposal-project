@@ -4,7 +4,13 @@ function Card({ proposalToView }) {
   return (
     <div className="proposal-dec-card">
       <div className="proposal-dec-card-img-container">
-        <img src={proposalToView !== "" ? proposalToView.images[0] : ""} />
+        <img
+          src={
+            proposalToView.images[0]
+              ? proposalToView.images[0]
+              : "https://www.suffolk.com/wp-content/themes/suffolk-theme/img/default-img.jpg"
+          }
+        />
       </div>
       <div className="proposal-dec-card-proposal-id">
         ID : {proposalToView._id}
