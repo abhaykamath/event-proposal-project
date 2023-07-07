@@ -10,7 +10,8 @@ const register = async (
   password,
   navigate,
   clearRegisterForm,
-  setDefaultView
+  setDefaultView,
+  setLoading
 ) => {
   try {
     const res = await axios.post(register_api, {
@@ -24,12 +25,11 @@ const register = async (
     console.log(res);
     clearRegisterForm();
     setDefaultView();
+    setLoading(false);
   } catch (error) {
-
     console.log(error.response);
     alert(error.response.data.message);
-   
-
+    setLoading(false);
   }
 };
 

@@ -10,21 +10,25 @@ function Register({
 }) {
   return (
     <div className="enter-details">
-      <div>Register your Account</div>
+      <div className="sign-form-header">Register your Account</div>
       <div>
         <input ref={nameRef} placeholder="Name" />
       </div>
       <div>
-        <input ref={emailRef} placeholder="Email" type='email'/>
+        <input ref={emailRef} placeholder="Email" type="email" />
       </div>
       <div>
         <input ref={contactRef} placeholder="Contact" />
       </div>
       <div>
-        <input ref={passwordRef} placeholder="Password" type='password'/>
+        <input type="password" ref={passwordRef} placeholder="Password" />
       </div>
       <div>
-        <input ref={confirmPasswordRef} placeholder="Confirm Password" type='password'/>
+        <input
+          type="password"
+          ref={confirmPasswordRef}
+          placeholder="Confirm Password"
+        />
       </div>
     </div>
   );

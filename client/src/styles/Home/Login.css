@@ -4,7 +4,7 @@
   padding-top: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 1.75rem;
+  gap: 1.25rem;
 }
 
 .enter-details input {

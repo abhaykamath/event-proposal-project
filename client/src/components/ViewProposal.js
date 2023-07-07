@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../styles/ViewProposal.css";
 import Card from "./viewProposals/Card";
@@ -22,7 +22,7 @@ function ViewProposal() {
     await axios.put(
       updateSelectionApi,
       { new_selection: id !== null ? [id] : [] },
-      { headers: { Authorization: `Bearer ${context.token}` } }
+      { headers: { Authorization: `Bearer ${localStorage.token}` } }
     );
     id === null ? setSelected([]) : setSelected([id]);
     setLoading(false);

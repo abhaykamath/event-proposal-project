@@ -1,11 +1,11 @@
 .navbar-custom {
     box-sizing: border-box;
     /* border-bottom: 1px solid #ccc; */
-    height: 7vh;
+    /* height: 7vh; */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 0.5rem 2rem;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 

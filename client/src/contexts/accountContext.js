@@ -7,11 +7,9 @@ export function useAccountInfo() {
 }
 
 export function AccountProvider({ children }) {
-  const [token, setToken] = useState(
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YTU2YjZhMzUwMzJmMzZmYmE2YWE5NCIsImlhdCI6MTY4ODY5MjgwOCwiZXhwIjoxNjg4NzM2MDA4fQ.bIsEyIeBGkmyULHATUpmuhVF4vrEbbw1xCYr3c8CekE"
-  );
+  const [token, setToken] = useState("");
   const [accountType, setAccountType] = useState("");
-  const [accountDetails, setAccountDetails] = useState();
+  const [accountDetails, setAccountDetails] = useState("");
 
   return (
     <AccountContext.Provider
