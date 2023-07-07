@@ -1,7 +1,14 @@
 import React from "react";
 import "../styles/VendorProposalTile.css";
 import axios from "axios";
-function VendorProposalTile({ proposal, setbtnname,setEditProposal }) {
+import { useOutletContext } from "react-router-dom";
+function VendorProposalTile({
+  proposal,
+  setbtnname,
+  setEditProposal,
+  setModalContent,
+}) {
+  const { getVendorProposals } = useOutletContext();
   const {
     event_name,
     description,
@@ -11,18 +18,17 @@ function VendorProposalTile({ proposal, setbtnname,setEditProposal }) {
     event_to_date,
     budget,
   } = proposal;
-  async function deleteProposal(){
+  async function deleteProposal() {
     await axios({
       method: "delete",
-      url: "http://localhost:4000/eventapp/api/v1/proposal/"+proposal._id,
+      url: "http://localhost:4000/eventapp/api/v1/proposal/" + proposal._id,
       headers: {
         Authorization: `Bearer ${localStorage.token}`,
       },
-      data:{
-
-      }
+      data: {},
     });
-    window.location.reload(true);
+    // window.location.reload(true);
+    getVendorProposals();
   }
   return (
     <>
@@ -51,16 +57,24 @@ function VendorProposalTile({ proposal, setbtnname,setEditProposal }) {
         </div>
         <div className="tile-icons">
           <i
-            class="fa-solid fa-pen"
+            className="fa-solid fa-pen"
             id="tile-edit"
             onClick={() => {
+              // console.log(proposal);
               setbtnname("Edit");
               setEditProposal(proposal);
+              setModalContent(proposal);
             }}
             data-bs-toggle="modal"
             data-bs-target="#exampleModal"
           ></i>
-          <i class="fa-solid fa-trash-can" id="tile-delete" onClick={()=>{deleteProposal();}}></i>
+          <i
+            class="fa-solid fa-trash-can"
+            id="tile-delete"
+            onClick={() => {
+              deleteProposal();
+            }}
+          ></i>
         </div>
       </div>
     </>

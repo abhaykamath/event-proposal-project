@@ -10,15 +10,15 @@ const all_proposals_api = "http://localhost:4000/eventapp/api/v1/proposal";
 
 function UserProposals() {
   const context = useAccountInfo();
-  const { proposals, proposalToView, setProposalToView, selected } =
-    useOutletContext();
+  const { proposals, setProposalToView, selected } = useOutletContext();
 
   return (
     <>
       <div className="banner">
         <img src="./banner.jpg" alt="banner" />
       </div>
-      {selected.length !== 0 ? (
+      {selected.length !== 0 &&
+      new Set(proposals.map((p) => p._id)).has(selected[0]) ? (
         <SelectedProposals
           proposals={proposals}
           selected={selected}

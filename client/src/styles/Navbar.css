@@ -1,38 +1,53 @@
 .navbar-custom {
-    box-sizing: border-box;
-    /* border-bottom: 1px solid #ccc; */
-    /* height: 7vh; */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem 2rem;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-sizing: border-box;
+  /* border-bottom: 1px solid #ccc; */
+  /* height: 7vh; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 2rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .navbar-logo {
-    font-weight: bold;
-    font-size: 2rem;
-    color: #4285F4;
+  font-weight: bold;
+  font-size: 2rem;
+  color: #4285f4;
 }
 
 .navbar-title {
-    font-size: 1.2rem;
+  font-size: 1.2rem;
 }
 
 .navbar-profile {
-    box-sizing: border-box;
-    display: flex;
-    align-items: flex-end;
-    gap: 0.75rem;
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-end;
+  gap: 0.75rem;
 }
 
 .profile-picture {
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid #ccc;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #ccc;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+}
+
+.navbar-custom button {
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  border: none;
+  background-color: #27374d;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar-custom button:active {
+  opacity: 0.75;
 }
