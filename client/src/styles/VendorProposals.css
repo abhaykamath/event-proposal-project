@@ -4,11 +4,17 @@
   text-align: center;
 }
 .vendor-container {
-  display: inline-block;
-  width: 90%;
+  box-sizing: border-box;
+  min-height: 93vh;
+  background-color: #f0eae9;
+  /* background-color: white; */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   /* text-align: center; */
   /* align-items: center; */
-  margin-top: 5%;
+  /* margin-top: 5%; */
 }
 .vendor-page {
   text-align: center;
@@ -18,18 +24,38 @@
   width: 78%;
   border: none;
 }
-.vendor-proposal-head {
-  font-weight: bolder;
-}
+
 #vendor-filter,
 .vendor-proposal-head {
   padding: 15px;
 }
+.vendor-proposal-head {
+  font-weight: bolder;
+  padding: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.vendor-proposals-container {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.vendor-proposals {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
 .modal-content {
-  width: fit-content;
+  /* width: fit-content; */
 }
 .modal-dialog {
-  max-width: fit-content !important;
+  max-width: 50% !important;
 }
 .modal-title {
   position: relative;

@@ -9,6 +9,7 @@ import Loader from "./Loader";
 import { useOutletContext } from "react-router-dom";
 import { useNavigate } from "react-router";
 import { useAccountInfo } from "../contexts/accountContext";
+import Events from "./viewProposals/Events";
 
 const updateSelectionApi = "http://localhost:4000/eventapp/api/v1/account";
 
@@ -31,7 +32,12 @@ function ViewProposal() {
   return (
     <div className="view-proposal-container">
       <div className="top-bar">
-        <div>
+        <div
+          style={{
+            fontWeight: "bold",
+            fontSize: "1.2rem"
+          }}
+        >
           Proposals
           <i className="fa-solid fa-less-than"></i>
           <div>{proposalToView !== "" ? proposalToView.vendor_name : ""}</div>
@@ -42,8 +48,11 @@ function ViewProposal() {
           ""
         )}
 
-        <div>
+        <div className="top-bar-buttons">
           <button
+            style={{
+              opacity: loading ? "0.75" : "1",
+            }}
             disabled={loading ? true : false}
             onClick={() => {
               navigate(-1);
@@ -53,6 +62,9 @@ function ViewProposal() {
           </button>
           {proposalToView._id === selected[0] ? (
             <button
+              style={{
+                opacity: loading ? "0.75" : "1",
+              }}
               disabled={loading ? true : false}
               onClick={() => {
                 setLoading(true);
@@ -63,6 +75,9 @@ function ViewProposal() {
             </button>
           ) : (
             <button
+              style={{
+                opacity: loading ? "0.75" : "1",
+              }}
               disabled={loading ? true : false}
               onClick={() => {
                 setLoading(true);
@@ -76,9 +91,10 @@ function ViewProposal() {
       </div>
       <div className="proposal-desc-grid">
         <Card proposalToView={proposalToView !== "" ? proposalToView : ""} />
-        <Venue />
-        <Food />
+        <Venue proposalToView={proposalToView} />
+        <Food proposalToView={proposalToView} />
         <Album images={proposalToView !== "" ? proposalToView.images : ""} />
+        <Events proposalToView={proposalToView} />
       </div>
     </div>
   );

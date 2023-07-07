@@ -11,7 +11,11 @@ const createproposalapi = "http://localhost:4000/eventapp/api/v1/proposal/";
 
 function VendorProposals() {
   const context = useAccountInfo();
-  const { proposals, getVendorProposals } = useOutletContext();
+  const { proposals, getVendorProposals, proposalLoading, setProposalLoading } =
+    useOutletContext();
+
+  const [search, setSearched] = useState("");
+  const [loading, setLoading] = useState(false);
   const [btnname, setbtnname] = useState("Add");
   const [createimg, setcreateimg] = useState([]);
   const [editproposal, setEditProposal] = useState([]);
@@ -89,12 +93,14 @@ function VendorProposals() {
           events: events_ref,
         },
       });
-
+      setLoading(false);
       document.getElementById("modal-close-btn").click();
+      setProposalLoading(true);
       // window.location.reload(true);
       resetModalContent();
       getVendorProposals();
     } catch (e) {
+      setLoading(false);
       console.log(e.message);
     }
   }
@@ -134,10 +140,13 @@ function VendorProposals() {
           events: events_ref,
         },
       });
+      setLoading(false);
+      setProposalLoading(true);
       document.getElementById("modal-close-btn").click();
       // window.location.reload(true);
       getVendorProposals();
     } catch (e) {
+      setLoading(false);
       console.log(e.message);
     }
   }
@@ -146,16 +155,22 @@ function VendorProposals() {
       <div className="vendor-container">
         <div className="vendor-search-create">
           <label className="vendor-proposal-head">Proposals</label>
-          <i
-            className="fa-solid fa-magnifying-glass"
-            id="vendor-search-icon"
-          ></i>
-          <input
-            type="search"
-            placeholder="Search event proposals"
-            className="vendor-search"
-          />
-          <i className="fa-solid fa-filter" id="vendor-filter"></i>
+          <div className="search-bar">
+            <i
+              className="fa-solid fa-magnifying-glass"
+              id="vendor-search-icon"
+            ></i>
+            <input
+              type="search"
+              placeholder="Search event proposals"
+              className="vendor-search"
+              onChange={(e) => {
+                setSearched(e.target.value);
+              }}
+            />
+          </div>
+
+          {/* <i className="fa-solid fa-filter" id="vendor-filter"></i> */}
           <button
             className="btn btn-primary"
             id="vendor-create-btn"
@@ -166,22 +181,31 @@ function VendorProposals() {
             data-bs-toggle="modal"
             data-bs-target="#exampleModal"
           >
-            CREATE
+            Create
           </button>
         </div>
         <div className="vendor-proposals-container">
           <div className="vendor-proposals">
-            {proposals.map((proposal, index) => {
-              return (
-                <VendorProposalTile
-                  key={index}
-                  proposal={proposal}
-                  setbtnname={setbtnname}
-                  setEditProposal={setEditProposal}
-                  setModalContent={setModalContent}
-                />
-              );
-            })}
+            {proposalLoading ? (
+              <Loader />
+            ) : (
+              proposals
+                .filter((p) => {
+                  if (p.event_name.toLowerCase().includes(search.toLowerCase()))
+                    return p;
+                })
+                .map((proposal, index) => {
+                  return (
+                    <VendorProposalTile
+                      key={index}
+                      proposal={proposal}
+                      setbtnname={setbtnname}
+                      setEditProposal={setEditProposal}
+                      setModalContent={setModalContent}
+                    />
+                  );
+                })
+            )}
           </div>
         </div>
 
@@ -231,6 +255,7 @@ function VendorProposals() {
                   className="btn btn-primary"
                   data-mdb-focus="false"
                   onClick={() => {
+                    setLoading(true);
                     if (btnname === "Add") {
                       createproposalindb(
                         createimg,
@@ -262,7 +287,7 @@ function VendorProposals() {
                     }
                   }}
                 >
-                  {btnname} {<Loader />}
+                  {btnname} {loading ? <Loader /> : ""}
                 </button>
               </div>
             </div>

@@ -1,8 +1,13 @@
 import React from "react";
-import "../../styles/viewProposals/Food.css"
+import "../../styles/viewProposals/Food.css";
 
-function Food() {
-  return <div className="food-grid-item">Food Preferences</div>;
+function Food({ proposalToView }) {
+  return (
+    <div className="food-grid-item">
+      <div>Food Preferences</div>
+      <div>{proposalToView.food_prefs}</div>
+    </div>
+  );
 }
 
 export default Food;

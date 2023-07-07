@@ -17,10 +17,10 @@ function Card({ proposalToView }) {
       </div>
       <div className="proposal-dec-card-details">
         <div>
-          <span className="label">Name</span> {proposalToView.vendor_name}
+          <span className="label">Name : </span> {proposalToView.vendor_name}
         </div>
         <div>
-          <span className="label">Email</span> {proposalToView.vendor_email}
+          <span className="label">Email : </span> {proposalToView.vendor_email}
         </div>
         <div className="proposal-timeline">
           <div>

@@ -15,7 +15,7 @@ function Navbar() {
 
   return (
     <nav className="navbar-custom">
-      <div className="navbar-logo">LOGO</div>
+      <div className="navbar-logo">EVENTURA</div>
       <div className="navbar-title">
         {context.accountType === "USER" ? "User" : "Vendor"} Dashboard
       </div>
