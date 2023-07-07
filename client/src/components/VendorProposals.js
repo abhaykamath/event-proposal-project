@@ -9,10 +9,9 @@ import axios from "axios";
 
 const createproposalapi = "http://localhost:4000/eventapp/api/v1/proposal/";
 
-
 function VendorProposals() {
   const context = useAccountInfo();
-  const { proposals } = useOutletContext();
+  const { proposals, getVendorProposals } = useOutletContext();
   const [btnname, setbtnname] = useState("Add");
   const [createimg, setcreateimg] = useState([]);
   const [editproposal, setEditProposal] = useState([]);
@@ -28,6 +27,33 @@ function VendorProposals() {
   const events_ref = useRef(null);
   const close_ref = useRef();
 
+  function setModalContent(proposal_to_view) {
+    event_name_ref.current.value = proposal_to_view.event_name;
+    event_place_ref.current.value = proposal_to_view.event_place;
+    proposal_type_ref.current.value = proposal_to_view.proposal_type;
+    event_type_ref.current.value = proposal_to_view.event_type;
+    budget_ref.current.value = proposal_to_view.budget;
+    event_from_date_ref.current.value = proposal_to_view.event_from_date;
+    event_to_date_ref.current.value = proposal_to_view.event_to_date;
+    description_ref.current.value = proposal_to_view.description;
+    food_prefs_ref.current.value = proposal_to_view.food_prefs;
+    events_ref.current.value = proposal_to_view.events;
+    setcreateimg([...proposal_to_view.images]);
+  }
+
+  function resetModalContent() {
+    event_name_ref.current.value = "";
+    event_place_ref.current.value = "";
+    proposal_type_ref.current.value = "";
+    event_type_ref.current.value = "";
+    budget_ref.current.value = "";
+    event_from_date_ref.current.value = "";
+    event_to_date_ref.current.value = "";
+    description_ref.current.value = "";
+    food_prefs_ref.current.value = "";
+    events_ref.current.value = "";
+    setcreateimg([]);
+  }
 
   async function createproposalindb(
     createimg,
@@ -65,7 +91,9 @@ function VendorProposals() {
       });
 
       document.getElementById("modal-close-btn").click();
-      window.location.reload(true);
+      // window.location.reload(true);
+      resetModalContent();
+      getVendorProposals();
     } catch (e) {
       console.log(e.message);
     }
@@ -87,7 +115,8 @@ function VendorProposals() {
     try {
       let data = await axios({
         method: "put",
-        url: "http://localhost:4000/eventapp/api/v1/proposal/"+editproposal._id,
+        url:
+          "http://localhost:4000/eventapp/api/v1/proposal/" + editproposal._id,
         headers: {
           Authorization: `Bearer ${localStorage.token}`,
         },
@@ -106,7 +135,8 @@ function VendorProposals() {
         },
       });
       document.getElementById("modal-close-btn").click();
-      window.location.reload(true);
+      // window.location.reload(true);
+      getVendorProposals();
     } catch (e) {
       console.log(e.message);
     }
@@ -116,7 +146,10 @@ function VendorProposals() {
       <div className="vendor-container">
         <div className="vendor-search-create">
           <label className="vendor-proposal-head">Proposals</label>
-          <i class="fa-solid fa-magnifying-glass" id="vendor-search-icon"></i>
+          <i
+            className="fa-solid fa-magnifying-glass"
+            id="vendor-search-icon"
+          ></i>
           <input
             type="search"
             placeholder="Search event proposals"
@@ -128,6 +161,7 @@ function VendorProposals() {
             id="vendor-create-btn"
             onClick={() => {
               setbtnname("Add");
+              resetModalContent();
             }}
             data-bs-toggle="modal"
             data-bs-target="#exampleModal"
@@ -139,42 +173,41 @@ function VendorProposals() {
           <div className="vendor-proposals">
             {proposals.map((proposal, index) => {
               return (
-                <>
-                  <VendorProposalTile
-                    key={index}
-                    proposal={proposal}
-                    setbtnname={setbtnname}
-                    setEditProposal={setEditProposal}
-                  />
-                </>
+                <VendorProposalTile
+                  key={index}
+                  proposal={proposal}
+                  setbtnname={setbtnname}
+                  setEditProposal={setEditProposal}
+                  setModalContent={setModalContent}
+                />
               );
             })}
           </div>
         </div>
 
         <div
-          class="modal fade"
+          className="modal fade"
           id="exampleModal"
-          tabindex="-1"
+          tabIndex="-1"
           aria-labelledby="exampleModalLabel"
           aria-hidden="true"
         >
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLabel">
                   {`${btnname} Proposal`}
                 </h5>
                 <button
                   type="button"
-                  class="btn-close"
+                  className="btn-close"
                   id="modal-close-btn"
                   data-bs-dismiss="modal"
                   aria-label="Close"
                   ref={close_ref}
                 ></button>
               </div>
-              <div class="modal-body">
+              <div className="modal-body">
                 <CreateProposal
                   setcreateimg={setcreateimg}
                   createimg={createimg}
@@ -192,7 +225,7 @@ function VendorProposals() {
                   btnname={btnname}
                 />
               </div>
-              <div class="modal-footer">
+              <div className="modal-footer">
                 <button
                   type="button"
                   className="btn btn-primary"
@@ -212,9 +245,9 @@ function VendorProposals() {
                         food_prefs_ref.current.value,
                         events_ref.current.value
                       );
-                    }
-                    else{editproposalindb(
-                      createimg,
+                    } else {
+                      editproposalindb(
+                        createimg,
                         event_name_ref.current.value,
                         event_place_ref.current.value,
                         proposal_type_ref.current.value,
@@ -225,7 +258,8 @@ function VendorProposals() {
                         description_ref.current.value,
                         food_prefs_ref.current.value,
                         events_ref.current.value
-                    );}
+                      );
+                    }
                   }}
                 >
                   {btnname} {<Loader />}

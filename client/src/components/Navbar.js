@@ -31,7 +31,7 @@ function Navbar() {
             }}
             className="logout-button"
           >
-            logout
+            Logout <i className="fa-solid fa-arrow-right-from-bracket"></i>
           </button>
         </div>
       </div>

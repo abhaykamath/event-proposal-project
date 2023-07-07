@@ -19,35 +19,6 @@ function CreateProposal({
   btnname,
 }) {
   const [url, seturl] = useState(true);
-  function editProposalfun() {
-    if (btnname === "Edit") {
-      event_name_ref.current.value = editproposal.event_name;
-      event_place_ref.current.value = editproposal.event_place;
-      proposal_type_ref.current.value = editproposal.proposal_type;
-      event_type_ref.current.value = editproposal.event_type;
-      budget_ref.current.value = editproposal.budget;
-      event_from_date_ref.current.value = editproposal.event_from_date;
-      event_to_date_ref.current.value = editproposal.event_to_date;
-      description_ref.current.value = editproposal.description;
-      food_prefs_ref.current.value = editproposal.food_prefs;
-      events_ref.current.value = editproposal.events;
-      // setcreateimg([...editproposal.images]);
-      // console.log(editproposal.images);
-    }
-    // else{
-    //   event_name_ref.current.value="";
-    //   event_place_ref.current.value="";
-    //   proposal_type_ref.current.value="";
-    //   event_type_ref.current.value="";
-    //   budget_ref.current.value="";
-    //   event_from_date_ref.current.value="";
-    //   event_to_date_ref.current.value="";
-    //   description_ref.current.value="";
-    //   food_prefs_ref.current.value="";
-    //   events_ref.current.value="";
-    // }
-  }
-  editProposalfun();
 
   return (
     <>

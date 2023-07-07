@@ -40,7 +40,7 @@ function VendorDashboard() {
   return (
     <>
       <Navbar />
-      <Outlet context={{ proposals }} />
+      <Outlet context={{ proposals, getVendorProposals }} />
     </>
   );
 }
