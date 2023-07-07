@@ -11,12 +11,16 @@ function Navbar() {
     // window.location.reload(false);\
     navigate('/home',{replace:true})
   }
+import { useAccountInfo } from "../contexts/accountContext";
+
+function Navbar({username}) {
+  const context = useAccountInfo();
   return (
-    <nav className="navbar">
+    <nav className="navbar-custom">
       <div className="navbar-logo">LOGO</div>
-      <div className="navbar-title">User Dashboard</div>
+      <div className="navbar-title">{`${context.accountType} Dashboard`}</div>
       <div className="navbar-profile">
-        <div className="username">Username</div>
+        <div className="username">{username.username}</div>
         <div className="profile-picture">
           <i className="fa-solid fa-user"></i>
         </div>

@@ -1,0 +1,37 @@
+.modal-footer {
+  display: flex !important;
+  justify-content: center !important;
+  text-align: center;
+}
+.vendor-container {
+  display: inline-block;
+  width: 90%;
+  /* text-align: center; */
+  /* align-items: center; */
+  margin-top: 5%;
+}
+.vendor-page {
+  text-align: center;
+}
+.vendor-search {
+  display: inline-block;
+  width: 78%;
+  border: none;
+}
+.vendor-proposal-head {
+  font-weight: bolder;
+}
+#vendor-filter,
+.vendor-proposal-head {
+  padding: 15px;
+}
+.modal-content {
+  width: fit-content;
+}
+.modal-dialog {
+  max-width: fit-content !important;
+}
+.modal-title {
+  position: relative;
+  left: 45%;
+}

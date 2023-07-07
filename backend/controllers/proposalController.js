@@ -30,6 +30,8 @@ const createNewProposal = async (req, res) => {
   try {
     const data = await proposalModel.create({
       vendor: req.user._id,
+      vendor_name: req.user.name,
+      vendor_email: req.user.email,
       ...req.body,
     });
     res.status(201);

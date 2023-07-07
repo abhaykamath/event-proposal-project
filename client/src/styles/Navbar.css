@@ -1,7 +1,7 @@
-.navbar {
+.navbar-custom {
     box-sizing: border-box;
     /* border-bottom: 1px solid #ccc; */
-    height: 8vh;
+    height: 7vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -16,7 +16,7 @@
 }
 
 .navbar-title {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
 }
 
 .navbar-profile {

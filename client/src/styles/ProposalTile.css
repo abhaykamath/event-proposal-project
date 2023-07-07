@@ -2,7 +2,7 @@
   box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: 0.5rem;
-  width: 100%;
+  /* width: 100%; */
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
@@ -17,7 +17,7 @@
 
 .proposal-thumbnail-container {
     box-sizing: border-box;
-    height: 10rem;
+    height: 8rem;
 }
 
 .proposal-tile img {
@@ -31,18 +31,19 @@
 
 .tile-info {
   box-sizing: border-box;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1rem;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
 }
 
 .tile-info div:nth-child(1) {
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: bold;
 }
 
 .tile-info div:nth-child(3) {
   font-size: 0.9rem;
+  font-weight: bold;
   color: #34a853;
 }

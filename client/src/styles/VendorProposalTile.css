@@ -1,0 +1,39 @@
+.vendor-tile-container {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  text-align: left;
+  display: inline-block;
+  margin-top: 25px;
+  width: 100%;
+}
+.tile-event-name {
+  font-weight: bold;
+  text-align: left;
+  padding-left: 15px;
+}
+.tile-description {
+  text-align: left;
+  padding-left: 15px;
+  border-bottom: 1px solid gray;
+}
+.vendor-tile-label {
+  display: block;
+  color: gray;
+}
+.tile-event-type,
+.tile-proposal_type,
+.tile-event_from_date,
+.tile-event_to_date,
+.tile-budget {
+  display: inline-block;
+  padding: 15px;
+  border-right: 1px solid gray;
+}
+.tile-icons {
+  float: right;
+  margin-top: 25px;
+}
+#tile-edit,
+#tile-delete {
+  padding-right: 10px;
+  margin-right: 15px;
+}
