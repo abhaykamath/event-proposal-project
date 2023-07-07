@@ -1,12 +1,18 @@
 .navbar-custom {
   box-sizing: border-box;
   /* border-bottom: 1px solid #ccc; */
-  /* height: 7vh; */
+  height: 7vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 2rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: white;
+}
+
+.navbar-custom .username {
+  font-size: 1.1rem;
+  font-weight: bold;
 }
 
 .navbar-logo {
@@ -16,13 +22,14 @@
 }
 
 .navbar-title {
-  font-size: 1.2rem;
+  font-size: 1.75rem;
+  font-weight: bold;
 }
 
 .navbar-profile {
   box-sizing: border-box;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   gap: 0.75rem;
 }
 

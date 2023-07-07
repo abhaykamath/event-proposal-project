@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/VendorProposalTile.css";
+import Loader from "./Loader";
 import axios from "axios";
 import { useOutletContext } from "react-router-dom";
 function VendorProposalTile({
@@ -8,7 +9,9 @@ function VendorProposalTile({
   setEditProposal,
   setModalContent,
 }) {
-  const { getVendorProposals } = useOutletContext();
+  const [loading, setLoading] = useState(false);
+  const { getVendorProposals, proposalLoading, setProposalLoading } =
+    useOutletContext();
   const {
     event_name,
     description,
@@ -27,54 +30,69 @@ function VendorProposalTile({
       },
       data: {},
     });
+    setLoading(false);
+    setProposalLoading(true);
     // window.location.reload(true);
     getVendorProposals();
   }
   return (
     <>
       <div className="vendor-tile-container">
-        <div className="tile-event-name">{event_name}</div>
-        <div className="tile-description">{description}</div>
-        <div className="tile-event-type">
-          <label className="vendor-tile-label">Event Type</label>
-          {event_type}
+        <div className="unique-top-bar">
+          <div className="tile-event-name">{event_name}</div>
+          <div className="tile-description">{description}</div>
         </div>
-        <div className="tile-proposal_type">
-          <label className="vendor-tile-label">Proposal Type</label>
-          {proposal_type}
-        </div>
-        <div className="tile-event_from_date">
-          <label className="vendor-tile-label">From Date</label>
-          {event_from_date}
-        </div>
-        <div className="tile-event_to_date">
-          <label className="vendor-tile-label">To Date</label>
-          {event_to_date}
-        </div>
-        <div className="tile-budget">
-          <label className="vendor-tile-label">Budget</label>
-          {budget}
-        </div>
-        <div className="tile-icons">
-          <i
-            className="fa-solid fa-pen"
-            id="tile-edit"
-            onClick={() => {
-              // console.log(proposal);
-              setbtnname("Edit");
-              setEditProposal(proposal);
-              setModalContent(proposal);
-            }}
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
-          ></i>
-          <i
-            class="fa-solid fa-trash-can"
-            id="tile-delete"
-            onClick={() => {
-              deleteProposal();
-            }}
-          ></i>
+
+        <div className="unique-bottom-bar">
+          <div className="left">
+            <div className="tile-event-type">
+              <label className="vendor-tile-label">Event Type</label>
+              {event_type}
+            </div>
+            <div className="tile-proposal_type">
+              <label className="vendor-tile-label">Proposal Type</label>
+              {proposal_type}
+            </div>
+            <div className="tile-event_from_date">
+              <label className="vendor-tile-label">From Date</label>
+              {event_from_date}
+            </div>
+            <div className="tile-event_to_date">
+              <label className="vendor-tile-label">To Date</label>
+              {event_to_date}
+            </div>
+            <div className="tile-budget">
+              <label className="vendor-tile-label">Budget</label>
+              {budget}
+            </div>
+          </div>
+          <div className="right">
+            <i
+              className="fa-solid fa-pen"
+              id="tile-edit"
+              onClick={() => {
+                // console.log(proposal);
+                setbtnname("Edit");
+                setEditProposal(proposal);
+                setModalContent(proposal);
+              }}
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+            ></i>
+            {loading ? (
+              <Loader />
+            ) : (
+              <i
+                class="fa-solid fa-trash-can"
+                id="tile-delete"
+                onClick={() => {
+                  setLoading(true);
+                  deleteProposal();
+                }}
+              ></i>
+            )}
+            {/* <div className="tile-icons"></div> */}
+          </div>
         </div>
       </div>
     </>

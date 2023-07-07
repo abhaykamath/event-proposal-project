@@ -13,6 +13,7 @@ function VendorDashboard() {
   const navigate = useNavigate();
   const context = useAccountInfo();
   const [proposals, setProposals] = useState([]);
+  const [proposalLoading, setProposalLoading] = useState(false);
 
   const getAccountDetails = async () => {
     const res = await axios.get(my_details_api, {
@@ -29,6 +30,7 @@ function VendorDashboard() {
     });
     const data = res.data.data;
     setProposals([...data]);
+    setProposalLoading(false);
   };
   useEffect(() => {
     if (!localStorage.getItem("token")) navigate("/home");
@@ -40,7 +42,14 @@ function VendorDashboard() {
   return (
     <>
       <Navbar />
-      <Outlet context={{ proposals, getVendorProposals }} />
+      <Outlet
+        context={{
+          proposals,
+          getVendorProposals,
+          proposalLoading,
+          setProposalLoading,
+        }}
+      />
     </>
   );
 }

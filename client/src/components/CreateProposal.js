@@ -150,7 +150,9 @@ function CreateProposal({
           </div>
 
           <div>
-            <label>Food Preferences</label>
+            <label style={{
+              marginTop: "1rem"
+            }}>Food Preferences</label>
             <textarea
               className="create-food-pref"
               ref={food_prefs_ref}

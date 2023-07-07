@@ -55,7 +55,6 @@ function ButtonBar({
         <button
           id="login-bar-button"
           onClick={() => {
-            setLoading(true);
             const payload = [
               accountType,
               usernameRef.current.value,
@@ -64,6 +63,7 @@ function ButtonBar({
             if (!usernameRef.current.value || !passwordRef.current.value) {
               alert("Enter All Fields");
             } else {
+              setLoading(true);
               login(...payload, navigate, context, setLoading);
             }
           }}
@@ -73,7 +73,6 @@ function ButtonBar({
       ) : (
         <button
           onClick={() => {
-            setLoading(true);
             const payload = [
               accountType,
               nameRef.current.value,
@@ -97,6 +96,7 @@ function ButtonBar({
             } else if (passwordRef.current.value.length <= 10) {
               alert("Please Enter 10 digit Password");
             } else {
+              setLoading(true);
               register(
                 ...payload,
                 navigate,
