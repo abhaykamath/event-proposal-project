@@ -1,0 +1,77 @@
+.create-form {
+  display: flex;
+}
+.left-pane {
+  border-right: 1px solid gray;
+  padding-right: 15px;
+  width: 40vw;
+  text-align: left;
+}
+.right-pane {
+  padding-left: 15px;
+  width: 40vw;
+  text-align: left;
+}
+.create-name {
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.create-lbl-name {
+  float: left;
+}
+.create-grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+.create-event-place,
+.create-proposal-type,
+.create-event-type,
+.create-budget,
+.create-from,
+.create-to,
+.create-description,
+.create-food-pref,
+.create-events {
+  display: block;
+  margin-bottom: 20px;
+}
+.create-description {
+  width: 100%;
+}
+
+.create-food-pref,
+.create-events {
+  width: 100%;
+  height: 20%;
+}
+.create-image-container {
+  display: flex;
+  justify-content: space-between;
+}
+.create-image-display-container {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: auto auto auto auto auto;
+  width: 100%;
+  border: 1px solid grey;
+  overflow: auto;
+  max-height: 150px;
+}
+.create-image-add-url {
+  width: 90%;
+}
+.create-image-add-btn {
+  background-color: none;
+  border-color: blue;
+  color: blue;
+  border-radius: 0.25rem;
+  width: 90px;
+}
+.create-image-display-container::-webkit-scrollbar {
+  display: none;
+}
+.create-image-display-container {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
