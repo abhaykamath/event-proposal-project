@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/VendorProposalTile.css";
-function VendorProposalTile({ proposal, setbtnname,setEditproposal }) {
+function VendorProposalTile({ proposal, setbtnname,setEditProposal }) {
   const {
     event_name,
     description,
@@ -41,7 +41,7 @@ function VendorProposalTile({ proposal, setbtnname,setEditproposal }) {
             id="tile-edit"
             onClick={() => {
               setbtnname("Edit");
-              setEditproposal([...proposal]);
+              setEditProposal(proposal);
             }}
             data-bs-toggle="modal"
             data-bs-target="#exampleModal"

@@ -8,7 +8,7 @@ import { useAccountInfo } from "../contexts/accountContext";
 import axios from "axios";
 
 const createproposalapi = "http://localhost:4000/eventapp/api/v1/proposal/";
-const editproposalapi = "http://localhost:4000/eventapp/api/v1/proposal/";
+
 
 function VendorProposals() {
   const context = useAccountInfo();
@@ -28,6 +28,7 @@ function VendorProposals() {
   const events_ref = useRef(null);
   const close_ref = useRef();
 
+
   async function createproposalindb(
     createimg,
     event_name_ref,
@@ -46,7 +47,48 @@ function VendorProposals() {
         method: "post",
         url: createproposalapi,
         headers: {
-          Authorization: `Bearer ${context.token}`,
+          Authorization: `Bearer ${localStorage.token}`,
+        },
+        data: {
+          event_name: event_name_ref,
+          event_place: event_place_ref,
+          proposal_type: proposal_type_ref,
+          event_type: event_type_ref,
+          budget: `${budget_ref}`,
+          event_from_date: event_from_date_ref,
+          event_to_date: event_to_date_ref,
+          description: description_ref,
+          images: createimg,
+          food_prefs: food_prefs_ref,
+          events: events_ref,
+        },
+      });
+
+      document.getElementById("modal-close-btn").click();
+    } catch (e) {
+      console.log(e.message);
+    }
+  }
+
+  async function editproposalindb(
+    createimg,
+    event_name_ref,
+    event_place_ref,
+    proposal_type_ref,
+    event_type_ref,
+    budget_ref,
+    event_from_date_ref,
+    event_to_date_ref,
+    description_ref,
+    food_prefs_ref,
+    events_ref
+  ) {
+    try {
+      let data = await axios({
+        method: "put",
+        url: "http://localhost:4000/eventapp/api/v1/proposal/"+editproposal._id,
+        headers: {
+          Authorization: `Bearer ${localStorage.token}`,
         },
         data: {
           event_name: event_name_ref,
@@ -67,7 +109,6 @@ function VendorProposals() {
       console.log(e.message);
     }
   }
-
   return (
     <div className="vendor-page">
       <div className="vendor-container">
@@ -170,7 +211,19 @@ function VendorProposals() {
                         events_ref.current.value
                       );
                     }
-                    // else{editproposalindb();}
+                    else{editproposalindb(
+                      createimg,
+                        event_name_ref.current.value,
+                        event_place_ref.current.value,
+                        proposal_type_ref.current.value,
+                        event_type_ref.current.value,
+                        budget_ref.current.value,
+                        event_from_date_ref.current.value,
+                        event_to_date_ref.current.value,
+                        description_ref.current.value,
+                        food_prefs_ref.current.value,
+                        events_ref.current.value
+                    );}
                   }}
                 >
                   {btnname} {<Loader />}
