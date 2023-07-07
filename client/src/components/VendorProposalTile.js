@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/VendorProposalTile.css";
+import axios from "axios";
 function VendorProposalTile({ proposal, setbtnname,setEditProposal }) {
   const {
     event_name,
@@ -10,6 +11,19 @@ function VendorProposalTile({ proposal, setbtnname,setEditProposal }) {
     event_to_date,
     budget,
   } = proposal;
+  async function deleteProposal(){
+    await axios({
+      method: "delete",
+      url: "http://localhost:4000/eventapp/api/v1/proposal/"+proposal._id,
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`,
+      },
+      data:{
+
+      }
+    });
+    window.location.reload(true);
+  }
   return (
     <>
       <div className="vendor-tile-container">
@@ -46,7 +60,7 @@ function VendorProposalTile({ proposal, setbtnname,setEditProposal }) {
             data-bs-toggle="modal"
             data-bs-target="#exampleModal"
           ></i>
-          <i class="fa-solid fa-trash-can" id="tile-delete"></i>
+          <i class="fa-solid fa-trash-can" id="tile-delete" onClick={()=>{deleteProposal();}}></i>
         </div>
       </div>
     </>
