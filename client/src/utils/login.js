@@ -12,6 +12,9 @@ const login = async (accountType, username, password, navigate, context) => {
     });
     context.changeToken(res.data.token);
     context.changeAccountType(accountType);
+    
+    localStorage.setItem('token',res.data.token)
+
     if (accountType === "user") {
       navigate("/user-dashboard", { replace: true });
     } else {
@@ -19,6 +22,9 @@ const login = async (accountType, username, password, navigate, context) => {
     }
   } catch (error) {
     console.log(error.response);
+    alert(error.response.data.message);
+    
+    
   }
 };
 
