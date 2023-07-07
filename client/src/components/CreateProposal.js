@@ -34,18 +34,18 @@ function CreateProposal({
       // setcreateimg([...editproposal.images]);
       // console.log(editproposal.images);
     }
-    else{
-      event_name_ref.current.value="";
-      event_place_ref.current.value="";
-      proposal_type_ref.current.value="";
-      event_type_ref.current.value="";
-      budget_ref.current.value="";
-      event_from_date_ref.current.value="";
-      event_to_date_ref.current.value="";
-      description_ref.current.value="";
-      food_prefs_ref.current.value="";
-      events_ref.current.value="";
-    }
+    // else{
+    //   event_name_ref.current.value="";
+    //   event_place_ref.current.value="";
+    //   proposal_type_ref.current.value="";
+    //   event_type_ref.current.value="";
+    //   budget_ref.current.value="";
+    //   event_from_date_ref.current.value="";
+    //   event_to_date_ref.current.value="";
+    //   description_ref.current.value="";
+    //   food_prefs_ref.current.value="";
+    //   events_ref.current.value="";
+    // }
   }
   editProposalfun();
 
