@@ -29,8 +29,8 @@ function ButtonBar({
     passwordRef.current.value = "";
     confirmPasswordRef.current.value = "";
   }
-
   return (
+
     <div className="button-bar">
       {view === "login" ? (
         <div
@@ -45,6 +45,7 @@ function ButtonBar({
         <div
           onClick={() => {
             setView("login");
+
           }}
           className="signup prevent-select"
         >
@@ -62,6 +63,12 @@ function ButtonBar({
               usernameRef.current.value,
               passwordRef.current.value,
             ];
+            if (!usernameRef.current.value || !passwordRef.current.value) {
+              alert('Enter All Fields')
+            }
+            else {
+              login(...payload, navigate, context);
+            }
             login(...payload, navigate, context, setLoading);
           }}
         >
@@ -76,14 +83,31 @@ function ButtonBar({
               emailRef.current.value,
               contactRef.current.value,
               passwordRef.current.value,
+              confirmPasswordRef.current.value
             ];
-            register(...payload, navigate, clearRegisterForm, setDefaultView);
+            if (!nameRef.current.value || !emailRef.current.value || !contactRef.current.value || !passwordRef.current.value||!confirmPasswordRef.current.value)
+            {
+              alert('All fields are required')
+            }
+            else if(passwordRef.current.value != confirmPasswordRef.current.value)
+            {
+              alert('Both the Passwords are not same')
+            }
+            else if(passwordRef.current.value.length <=10)
+            {
+              alert('Please Enter 10 digit Password')
+            }
+            else {
+              register(...payload, navigate, clearRegisterForm, setDefaultView);
+            }
+
           }}
         >
           REGISTER
         </button>
-      )}
-    </div>
+      )
+      }
+    </div >
   );
 }
 

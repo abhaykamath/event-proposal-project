@@ -19,6 +19,7 @@ const login = async (
     });
     context.changeToken(res.data.token);
     context.changeAccountType(accountType);
+    localStorage.setItem('token',res.data.token)
     setLoading(false);
     if (accountType === "user") {
       navigate("/user-dashboard", { replace: true });
@@ -28,6 +29,9 @@ const login = async (
   } catch (error) {
     setLoading(false);
     console.log(error.response);
+    alert(error.response.data.message);
+    
+    
   }
 };
 

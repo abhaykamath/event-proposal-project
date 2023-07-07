@@ -25,7 +25,11 @@ const register = async (
     clearRegisterForm();
     setDefaultView();
   } catch (error) {
+
     console.log(error.response);
+    alert(error.response.data.message);
+   
+
   }
 };
 

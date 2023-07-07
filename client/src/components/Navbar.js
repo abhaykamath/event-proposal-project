@@ -1,5 +1,16 @@
 import React from "react";
 import "../styles/Navbar.css";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+function Navbar() {
+
+  const navigate =useNavigate();
+
+  function refreshPage() {
+    localStorage.removeItem('token')
+    // window.location.reload(false);\
+    navigate('/home',{replace:true})
+  }
 import { useAccountInfo } from "../contexts/accountContext";
 
 function Navbar({username}) {
@@ -14,7 +25,8 @@ function Navbar({username}) {
           <i className="fa-solid fa-user"></i>
         </div>
         <div>
-          <button className="logout-button">logout</button>
+          <button onClick={() => {refreshPage()}
+          } className="logout-button">logout</button>
         </div>
       </div>
     </nav>

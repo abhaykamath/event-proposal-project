@@ -15,16 +15,16 @@ function Register({
         <input ref={nameRef} placeholder="Name" />
       </div>
       <div>
-        <input ref={emailRef} placeholder="Email" />
+        <input ref={emailRef} placeholder="Email" type='email'/>
       </div>
       <div>
         <input ref={contactRef} placeholder="Contact" />
       </div>
       <div>
-        <input ref={passwordRef} placeholder="Password" />
+        <input ref={passwordRef} placeholder="Password" type='password'/>
       </div>
       <div>
-        <input ref={confirmPasswordRef} placeholder="Confirm Password" />
+        <input ref={confirmPasswordRef} placeholder="Confirm Password" type='password'/>
       </div>
     </div>
   );

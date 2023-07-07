@@ -1,8 +1,20 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { useAccountInfo } from "../contexts/accountContext";
+const url = "http://localhost:4000/eventapp/api/v1/proposal";
+
+function UserDashboard() {
+  const context = useAccountInfo();
+  const navigate=useNavigate()
+  useEffect(()=>
+  {
+    if(!localStorage.getItem('token'))
+    {
+      navigate('/home')
+    }
+  },[])
 
 const all_proposals_api = "http://localhost:4000/eventapp/api/v1/proposal";
 const my_details_api =
