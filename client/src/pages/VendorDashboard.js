@@ -36,6 +36,7 @@ function VendorDashboard() {
     if (!localStorage.getItem("token")) navigate("/");
     else {
       navigate("/vendor-dashboard");
+      setProposalLoading(true);
       getAccountDetails();
       getVendorProposals();
     }

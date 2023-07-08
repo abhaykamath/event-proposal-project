@@ -55,7 +55,12 @@
   /* width: fit-content; */
 }
 .modal-dialog {
-  max-width: 50% !important;
+  max-width: 80% !important;
+}
+
+.modal-body {
+  box-sizing: border-box;
+  padding: 0 !important;
 }
 .modal-title {
   position: relative;

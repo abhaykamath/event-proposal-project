@@ -122,20 +122,21 @@ function CreateProposal({
             >
               Add
             </button>
-          </div>
-          <div hidden={url}>
             <input
+              hidden={url}
               className="create-image-add-url"
               type="text"
               placeholder="Enter Image URL"
             />
             <button
+              hidden={url}
+              className="create-image-add-btn"
               onClick={(e) => {
                 e.preventDefault();
                 const ele = document.getElementsByClassName(
                   "create-image-add-url"
                 )[0];
-                setcreateimg([ele.value, ...createimg]);
+                if (ele.value != "") setcreateimg([ele.value, ...createimg]);
                 ele.value = "";
                 seturl(true);
               }}
@@ -143,16 +144,24 @@ function CreateProposal({
               Add
             </button>
           </div>
-          <div className="create-image-display-container">
-            {createimg.map((img, index) => {
-              return <ImageDisplay key={index} img={img} />;
-            })}
-          </div>
+          {createimg.length ? (
+            <div className="create-image-display-container">
+              {createimg.map((img, index) => {
+                return <ImageDisplay key={index} img={img} />;
+              })}
+            </div>
+          ) : (
+            <div className="create-image-display-container-alt">No images added</div>
+          )}
 
           <div>
-            <label style={{
-              marginTop: "1rem"
-            }}>Food Preferences</label>
+            <label
+              style={{
+                marginTop: "1rem",
+              }}
+            >
+              Food Preferences
+            </label>
             <textarea
               className="create-food-pref"
               ref={food_prefs_ref}
