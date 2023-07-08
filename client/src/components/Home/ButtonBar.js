@@ -17,8 +17,9 @@ function ButtonBar({
   passwordRef,
   confirmPasswordRef,
   setDefaultView,
+  loading,
+  setLoading,
 }) {
-  const [loading, setLoading] = useState(false);
   const context = useAccountInfo();
   const navigate = useNavigate();
 

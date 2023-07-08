@@ -21,14 +21,18 @@ const login = async (req, res) => {
     const { accountType, identifier_type, identifier, password } = req.body;
     if (identifier_type === "contact") {
       const account = await accountModel.find({ contact: identifier });
-      if (accountType !== account[0].account_type) {
+      if (!account.length) {
+        res.status(400).json({ message: "User not found" });
+      } else if (accountType !== account[0].account_type) {
         res.status(400).json({ message: "user not found" });
       } else {
         sendResponse(account, password, res);
       }
     } else if (identifier_type === "email") {
       const account = await accountModel.find({ email: identifier });
-      if (accountType !== account[0].account_type) {
+      if (!account.length) {
+        res.status(400).json({ message: "User not found" });
+      } else if (accountType !== account[0].account_type) {
         res.status(400).json({ message: "user not found" });
       } else {
         sendResponse(account, password, res);

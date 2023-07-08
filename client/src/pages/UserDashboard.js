@@ -4,9 +4,10 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { useAccountInfo } from "../contexts/accountContext";
 import Navbar from "../components/Navbar";
 
-const all_proposals_api = "http://localhost:4000/eventapp/api/v1/proposal";
+const all_proposals_api =
+  "https://event-proposal-backend-k9e3.onrender.com/eventapp/api/v1/proposal";
 const my_details_api =
-  "http://localhost:4000/eventapp/api/v1/account/my-details";
+  "https://event-proposal-backend-k9e3.onrender.com/eventapp/api/v1/account/my-details";
 
 function UserDashboard() {
   const navigate = useNavigate();
@@ -36,7 +37,7 @@ function UserDashboard() {
   };
 
   useEffect(() => {
-    if (!localStorage.getItem("token")) navigate("/home");
+    if (!localStorage.getItem("token")) navigate("/");
     else {
       navigate("/user-dashboard");
       getAccountDetails();

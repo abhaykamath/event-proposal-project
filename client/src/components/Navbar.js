@@ -10,7 +10,7 @@ function Navbar() {
   function logout() {
     localStorage.removeItem("token");
     // window.location.reload(false);
-    navigate("/home", { replace: true });
+    navigate("/", { replace: true });
   }
 
   return (

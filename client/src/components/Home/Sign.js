@@ -7,6 +7,7 @@ import ButtonBar from "./ButtonBar";
 
 function Sign() {
   const [accountType, setAccountType] = useState("vendor");
+  const [loading, setLoading] = useState(false);
   const [view, setView] = useState("login");
   const nameRef = useRef(null);
   const emailRef = useRef(null);
@@ -16,6 +17,7 @@ function Sign() {
   const confirmPasswordRef = useRef(null);
 
   function setDefaultView() {
+    setLoading(false);
     setAccountType("vendor");
     setView("login");
   }
@@ -48,6 +50,8 @@ function Sign() {
         view={view}
         setView={setView}
         setDefaultView={setDefaultView}
+        loading={loading}
+        setLoading={setLoading}
       />
     </div>
   );

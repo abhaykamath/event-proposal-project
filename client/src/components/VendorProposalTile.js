@@ -24,7 +24,7 @@ function VendorProposalTile({
   async function deleteProposal() {
     await axios({
       method: "delete",
-      url: "http://localhost:4000/eventapp/api/v1/proposal/" + proposal._id,
+      url: "https://event-proposal-backend-k9e3.onrender.com/eventapp/api/v1/proposal/" + proposal._id,
       headers: {
         Authorization: `Bearer ${localStorage.token}`,
       },
