@@ -7,7 +7,8 @@ import { useOutletContext } from "react-router-dom";
 import { useAccountInfo } from "../contexts/accountContext";
 import axios from "axios";
 
-const createproposalapi = "http://localhost:4000/eventapp/api/v1/proposal/";
+const createproposalapi =
+  "https://event-proposal-backend-k9e3.onrender.com/eventapp/api/v1/proposal/";
 
 function VendorProposals() {
   const context = useAccountInfo();
@@ -122,7 +123,7 @@ function VendorProposals() {
       let data = await axios({
         method: "put",
         url:
-          "http://localhost:4000/eventapp/api/v1/proposal/" + editproposal._id,
+          "https://event-proposal-backend-k9e3.onrender.com/eventapp/api/v1/proposal/" + editproposal._id,
         headers: {
           Authorization: `Bearer ${localStorage.token}`,
         },

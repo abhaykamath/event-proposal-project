@@ -11,7 +11,8 @@ import { useNavigate } from "react-router";
 import { useAccountInfo } from "../contexts/accountContext";
 import Events from "./viewProposals/Events";
 
-const updateSelectionApi = "http://localhost:4000/eventapp/api/v1/account";
+const updateSelectionApi =
+  "https://event-proposal-backend-k9e3.onrender.com/eventapp/api/v1/account";
 
 function ViewProposal() {
   const context = useAccountInfo();
@@ -35,7 +36,7 @@ function ViewProposal() {
         <div
           style={{
             fontWeight: "bold",
-            fontSize: "1.2rem"
+            fontSize: "1.2rem",
           }}
         >
           Proposals

@@ -6,7 +6,8 @@ import { useAccountInfo } from "../../contexts/accountContext";
 import { useOutletContext } from "react-router-dom";
 import SelectedProposals from "./SelectedProposals";
 
-const all_proposals_api = "http://localhost:4000/eventapp/api/v1/proposal";
+const all_proposals_api =
+  "https://event-proposal-backend-k9e3.onrender.com/eventapp/api/v1/proposal";
 
 function UserProposals() {
   const context = useAccountInfo();

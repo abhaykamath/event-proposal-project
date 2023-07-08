@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const register_api = "http://localhost:4000/eventapp/api/v1/account/register";
+const register_api =
+  "https://event-proposal-backend-k9e3.onrender.com/eventapp/api/v1/account/register";
 
 const register = async (
   accountType,
@@ -21,15 +22,14 @@ const register = async (
       password,
       contact,
     });
-    // navigate("/user-dashboard");
-    console.log(res);
+    setLoading(false);
+    // console.log(res);
     clearRegisterForm();
     setDefaultView();
-    setLoading(false);
   } catch (error) {
-    console.log(error.response);
-    alert(error.response.data.message);
     setLoading(false);
+    // console.log(error.response);
+    alert(error.response.data.message);
   }
 };
 
