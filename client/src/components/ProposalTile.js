@@ -26,7 +26,9 @@ function ProposalTile({ proposal, setProposalToView, selected }) {
       </div>
       <div className="tile-info">
         <div>{vendor_name}</div>
-        <div>{budget}</div>
+        <div>
+          {new Intl.NumberFormat().format(budget) + "/-"}
+        </div>
         <div>{event_place}</div>
       </div>
     </div>

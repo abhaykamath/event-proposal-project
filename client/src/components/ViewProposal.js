@@ -10,6 +10,7 @@ import { useOutletContext } from "react-router-dom";
 import { useNavigate } from "react-router";
 import { useAccountInfo } from "../contexts/accountContext";
 import Events from "./viewProposals/Events";
+import VendorContact from "./viewProposals/VendorContact";
 
 const updateSelectionApi =
   "https://event-proposal-backend-k9e3.onrender.com/eventapp/api/v1/account";
@@ -92,9 +93,10 @@ function ViewProposal() {
       </div>
       <div className="proposal-desc-grid">
         <Card proposalToView={proposalToView !== "" ? proposalToView : ""} />
+        <Album images={proposalToView !== "" ? proposalToView.images : ""} />
+        <VendorContact proposalToView={proposalToView} />
         <Venue proposalToView={proposalToView} />
         <Food proposalToView={proposalToView} />
-        <Album images={proposalToView !== "" ? proposalToView.images : ""} />
         <Events proposalToView={proposalToView} />
       </div>
     </div>
