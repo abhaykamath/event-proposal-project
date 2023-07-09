@@ -12,7 +12,9 @@ const register = async (
   navigate,
   clearRegisterForm,
   setDefaultView,
-  setLoading
+  setLoading,
+  toastSuccess,
+  toastError
 ) => {
   try {
     const res = await axios.post(register_api, {
@@ -22,14 +24,13 @@ const register = async (
       password,
       contact,
     });
+    toastSuccess("Registered successfully");
     setLoading(false);
-    // console.log(res);
     clearRegisterForm();
     setDefaultView();
   } catch (error) {
+    toastError(error.response.data.message);
     setLoading(false);
-    // console.log(error.response);
-    alert(error.response.data.message);
   }
 };
 

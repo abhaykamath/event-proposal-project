@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const login_api = "https://event-proposal-backend-k9e3.onrender.com/eventapp/api/v1/account/login";
+const login_api =
+  "https://event-proposal-backend-k9e3.onrender.com/eventapp/api/v1/account/login";
 
 const login = async (
   accountType,
@@ -8,7 +9,8 @@ const login = async (
   password,
   navigate,
   context,
-  setLoading
+  setLoading,
+  toastError
 ) => {
   try {
     const res = await axios.post(login_api, {
@@ -29,7 +31,7 @@ const login = async (
   } catch (error) {
     setLoading(false);
     console.log(error.response);
-    alert(error.response.data.message);
+    toastError(error.response.data.message);
   }
 };
 
