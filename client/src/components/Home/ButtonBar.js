@@ -83,7 +83,7 @@ function ButtonBar({
 
         {view === "login" ? (
           <button
-            id="login-bar-button"
+            className="login-bar-button"
             onClick={() => {
               const payload = [
                 accountType,
@@ -98,10 +98,11 @@ function ButtonBar({
               }
             }}
           >
-            {loading ? <Loader /> : "LOGIN"}
+            LOGIN {loading ? <Loader /> : ""}
           </button>
         ) : (
           <button
+            className="login-bar-button"
             onClick={() => {
               const payload = [
                 accountType,
@@ -138,7 +139,7 @@ function ButtonBar({
               }
             }}
           >
-            {loading ? <Loader /> : "REGISTER"}
+            REGISTER {loading ? <Loader /> : ""}
           </button>
         )}
       </div>

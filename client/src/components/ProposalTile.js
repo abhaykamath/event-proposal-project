@@ -10,7 +10,6 @@ function ProposalTile({ proposal, setProposalToView, selected }) {
       className="proposal-tile"
       onClick={() => {
         setProposalToView(proposal);
-        // console.log(proposal);
         navigate(`view-proposal/${proposal._id}`);
       }}
     >
@@ -24,12 +23,22 @@ function ProposalTile({ proposal, setProposalToView, selected }) {
           alt="proposal-thumbnail"
         />
       </div>
-      <div className="tile-info">
+      <div
+        style={{
+          backgroundColor: selected[0] === proposal._id ? "#34A853" : "",
+          color: selected[0] === proposal._id ? "white" : "",
+        }}
+        className="tile-info"
+      >
         <div>{vendor_name}</div>
-        <div>
-          {new Intl.NumberFormat().format(budget) + "/-"}
+        <div>{new Intl.NumberFormat().format(budget) + "/-"}</div>
+        <div
+          style={{
+            color: selected[0] === proposal._id ? "white" : "",
+          }}
+        >
+          {event_place}
         </div>
-        <div>{event_place}</div>
       </div>
     </div>
   );
