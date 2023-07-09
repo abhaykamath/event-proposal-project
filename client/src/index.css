@@ -70,11 +70,15 @@ button:hover {
 select {
   box-sizing: border-box;
   border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  padding: 0.25rem;
 }
 
 textarea {
   box-sizing: border-box;
   border: 1px solid #ccc;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
 }
 
 .vendor-proposals .loader {
