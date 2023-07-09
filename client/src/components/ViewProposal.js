@@ -32,74 +32,86 @@ function ViewProposal() {
   };
 
   return (
-    <div className="view-proposal-container">
-      <div className="top-bar">
-        <div
-          style={{
-            fontWeight: "bold",
-            fontSize: "1.2rem",
-          }}
-        >
-          Proposals
-          <i className="fa-solid fa-less-than"></i>
-          <div>{proposalToView !== "" ? proposalToView.vendor_name : ""}</div>
-        </div>
-        {proposalToView._id === selected[0] ? (
-          <div className="selected-alert">Selected</div>
-        ) : (
-          ""
-        )}
+    <>
+      {proposalToView === "empty" ? (
+        navigate("/user-dashboard")
+      ) : (
+        <div className="view-proposal-container">
+          <div className="top-bar">
+            <div
+              style={{
+                fontWeight: "bold",
+                fontSize: "1.2rem",
+              }}
+            >
+              Proposals
+              <i className="fa-solid fa-less-than"></i>
+              <div>
+                {proposalToView !== "" ? proposalToView.vendor_name : ""}
+              </div>
+            </div>
+            {proposalToView._id === selected[0] ? (
+              <div className="selected-alert">Selected</div>
+            ) : (
+              ""
+            )}
 
-        <div className="top-bar-buttons">
-          <button
-            style={{
-              opacity: loading ? "0.75" : "1",
-            }}
-            disabled={loading ? true : false}
-            onClick={() => {
-              navigate(-1);
-            }}
-          >
-            Back
-          </button>
-          {proposalToView._id === selected[0] ? (
-            <button
-              style={{
-                opacity: loading ? "0.75" : "1",
-              }}
-              disabled={loading ? true : false}
-              onClick={() => {
-                setLoading(true);
-                updateSelection(null);
-              }}
-            >
-              Remove {loading ? <Loader /> : ""}
-            </button>
-          ) : (
-            <button
-              style={{
-                opacity: loading ? "0.75" : "1",
-              }}
-              disabled={loading ? true : false}
-              onClick={() => {
-                setLoading(true);
-                updateSelection(proposalToView._id);
-              }}
-            >
-              Select {loading ? <Loader /> : ""}
-            </button>
-          )}
+            <div className="top-bar-buttons">
+              <button
+                style={{
+                  opacity: loading ? "0.75" : "1",
+                }}
+                disabled={loading ? true : false}
+                onClick={() => {
+                  navigate(-1);
+                }}
+              >
+                Back
+              </button>
+              {proposalToView._id === selected[0] ? (
+                <button
+                  style={{
+                    opacity: loading ? "0.75" : "1",
+                  }}
+                  disabled={loading ? true : false}
+                  onClick={() => {
+                    setLoading(true);
+                    updateSelection(null);
+                  }}
+                >
+                  Remove {loading ? <Loader /> : ""}
+                </button>
+              ) : (
+                <button
+                  style={{
+                    opacity: loading ? "0.75" : "1",
+                  }}
+                  disabled={loading ? true : false}
+                  onClick={() => {
+                    setLoading(true);
+                    updateSelection(proposalToView._id);
+                  }}
+                >
+                  Select {loading ? <Loader /> : ""}
+                </button>
+              )}
+            </div>
+          </div>
+          <div className="proposal-desc-grid">
+            <Card
+              proposalToView={proposalToView !== "" ? proposalToView : ""}
+            />
+            <Album
+              images={proposalToView !== "" ? proposalToView.images : ""}
+            />
+            <VendorContact proposalToView={proposalToView} />
+            <Venue proposalToView={proposalToView} />
+            <Food proposalToView={proposalToView} />
+            <Events proposalToView={proposalToView} />
+          </div>
         </div>
-      </div>
-      <div className="proposal-desc-grid">
-        <Card proposalToView={proposalToView !== "" ? proposalToView : ""} />
-        <Album images={proposalToView !== "" ? proposalToView.images : ""} />
-        <VendorContact proposalToView={proposalToView} />
-        <Venue proposalToView={proposalToView} />
-        <Food proposalToView={proposalToView} />
-        <Events proposalToView={proposalToView} />
-      </div>
-    </div>
+      )}
+    </>
   );
 }
 

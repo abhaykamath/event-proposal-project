@@ -71,7 +71,6 @@ function VendorProposalTile({
               className="fa-solid fa-pen"
               id="tile-edit"
               onClick={() => {
-                // console.log(proposal);
                 setbtnname("Edit");
                 setEditProposal(proposal);
                 setModalContent(proposal);
@@ -83,7 +82,7 @@ function VendorProposalTile({
               <Loader />
             ) : (
               <i
-                class="fa-solid fa-trash-can"
+                className="fa-solid fa-trash-can"
                 id="tile-delete"
                 onClick={() => {
                   setLoading(true);

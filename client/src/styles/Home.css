@@ -7,9 +7,25 @@
   display: flex;
 }
 
+.home-page-logo {
+  box-sizing: border-box;
+  border-radius: 0.25rem;
+  letter-spacing: 0.1rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 2rem;
+  font-weight: bold;
+  background-color: #4285F4;
+  display: inline-block;
+  width: fit-content;
+  color: #fff;
+  position: absolute;
+  top: 3rem;
+  left: 9rem;
+}
+
 .home-container h1 {
   margin: 0;
-  font-size: 3.75rem;
+  font-size: 3.25rem;
   line-height: 5rem;
 }
 
