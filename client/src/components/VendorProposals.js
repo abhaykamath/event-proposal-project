@@ -6,6 +6,35 @@ import Loader from "./Loader";
 import { useOutletContext } from "react-router-dom";
 import { useAccountInfo } from "../contexts/accountContext";
 import axios from "axios";
+import { ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+function toastError(message) {
+  toast.error(message, {
+    position: "top-right",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
+}
+
+function toastSuccess(message) {
+  toast.success(message, {
+    position: "top-right",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
+}
 
 const createproposalapi =
   "https://event-proposal-backend-k9e3.onrender.com/eventapp/api/v1/proposal/";
@@ -97,7 +126,7 @@ function VendorProposals() {
       setLoading(false);
       document.getElementById("modal-close-btn").click();
       setProposalLoading(true);
-      // window.location.reload(true);
+
       resetModalContent();
       getVendorProposals();
     } catch (e) {
@@ -123,7 +152,8 @@ function VendorProposals() {
       let data = await axios({
         method: "put",
         url:
-          "https://event-proposal-backend-k9e3.onrender.com/eventapp/api/v1/proposal/" + editproposal._id,
+          "https://event-proposal-backend-k9e3.onrender.com/eventapp/api/v1/proposal/" +
+          editproposal._id,
         headers: {
           Authorization: `Bearer ${localStorage.token}`,
         },
@@ -144,7 +174,7 @@ function VendorProposals() {
       setLoading(false);
       setProposalLoading(true);
       document.getElementById("modal-close-btn").click();
-      // window.location.reload(true);
+
       getVendorProposals();
     } catch (e) {
       setLoading(false);
@@ -152,6 +182,7 @@ function VendorProposals() {
     }
   }
   return (
+    <>
     <div className="vendor-page">
       <div className="vendor-container">
         <div className="vendor-search-create">
@@ -171,7 +202,6 @@ function VendorProposals() {
             />
           </div>
 
-          {/* <i className="fa-solid fa-filter" id="vendor-filter"></i> */}
           <button
             className="btn btn-primary"
             id="vendor-create-btn"
@@ -256,35 +286,51 @@ function VendorProposals() {
                   className="btn btn-primary"
                   data-mdb-focus="false"
                   onClick={() => {
-                    setLoading(true);
-                    if (btnname === "Add") {
-                      createproposalindb(
-                        createimg,
-                        event_name_ref.current.value,
-                        event_place_ref.current.value,
-                        proposal_type_ref.current.value,
-                        event_type_ref.current.value,
-                        budget_ref.current.value,
-                        event_from_date_ref.current.value,
-                        event_to_date_ref.current.value,
-                        description_ref.current.value,
-                        food_prefs_ref.current.value,
-                        events_ref.current.value
-                      );
+                    if (
+                      !event_name_ref.current.value ||
+                      !event_place_ref.current.value ||
+                      !proposal_type_ref.current.value ||
+                      !event_type_ref.current.value ||
+                      !budget_ref.current.value ||
+                      !event_from_date_ref.current.value ||
+                      !event_to_date_ref.current.value ||
+                      !description_ref.current.value ||
+                      !food_prefs_ref.current.value ||
+                      !events_ref.current.value||
+                      !createimg.length
+                    ) {
+                      toastError("Enter all Fields");
                     } else {
-                      editproposalindb(
-                        createimg,
-                        event_name_ref.current.value,
-                        event_place_ref.current.value,
-                        proposal_type_ref.current.value,
-                        event_type_ref.current.value,
-                        budget_ref.current.value,
-                        event_from_date_ref.current.value,
-                        event_to_date_ref.current.value,
-                        description_ref.current.value,
-                        food_prefs_ref.current.value,
-                        events_ref.current.value
-                      );
+                      setLoading(true);
+                      if (btnname === "Add") {
+                        createproposalindb(
+                          createimg,
+                          event_name_ref.current.value,
+                          event_place_ref.current.value,
+                          proposal_type_ref.current.value,
+                          event_type_ref.current.value,
+                          budget_ref.current.value,
+                          event_from_date_ref.current.value,
+                          event_to_date_ref.current.value,
+                          description_ref.current.value,
+                          food_prefs_ref.current.value,
+                          events_ref.current.value
+                        );
+                      } else {
+                        editproposalindb(
+                          createimg,
+                          event_name_ref.current.value,
+                          event_place_ref.current.value,
+                          proposal_type_ref.current.value,
+                          event_type_ref.current.value,
+                          budget_ref.current.value,
+                          event_from_date_ref.current.value,
+                          event_to_date_ref.current.value,
+                          description_ref.current.value,
+                          food_prefs_ref.current.value,
+                          events_ref.current.value
+                        );
+                      }
                     }
                   }}
                 >
@@ -296,6 +342,8 @@ function VendorProposals() {
         </div>
       </div>
     </div>
+    <ToastContainer />
+    </>
   );
 }
 

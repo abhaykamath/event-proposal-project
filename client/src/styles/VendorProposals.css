@@ -50,10 +50,6 @@
   align-items: center;
   gap: 2rem;
 }
-
-.modal-content {
-  /* width: fit-content; */
-}
 .modal-dialog {
   max-width: 80% !important;
 }

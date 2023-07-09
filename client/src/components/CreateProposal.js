@@ -19,7 +19,13 @@ function CreateProposal({
   btnname,
 }) {
   const [url, seturl] = useState(true);
-
+  let date = new Date().getDate().toString();
+  date = date.length < 2 ? `0${date}` : date;
+  let month = (new Date().getMonth() + 1).toString();
+  month = month.length < 2 ? `0${month}` : month;
+  let Year = new Date().getFullYear().toString();
+  const today = Year + "-" + month + "-" + date;
+  console.log(today);
   return (
     <>
       <form className="create-form">
@@ -88,6 +94,16 @@ function CreateProposal({
                 type="date"
                 ref={event_from_date_ref}
                 className="create-from"
+                min={today}
+                onChange={() => {
+                  event_to_date_ref.current.min =
+                    event_from_date_ref.current.value;
+                  event_to_date_ref.current.value =
+                    event_from_date_ref.current.value >
+                    event_to_date_ref.current.value
+                      ? ""
+                      : event_to_date_ref.current.value;
+                }}
               />
             </span>
             <span className="create-span-to">
@@ -151,7 +167,9 @@ function CreateProposal({
               })}
             </div>
           ) : (
-            <div className="create-image-display-container-alt">No images added</div>
+            <div className="create-image-display-container-alt">
+              No images added
+            </div>
           )}
 
           <div>
