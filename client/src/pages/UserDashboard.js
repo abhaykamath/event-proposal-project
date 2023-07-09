@@ -13,7 +13,7 @@ function UserDashboard() {
   const navigate = useNavigate();
   const context = useAccountInfo();
   const [proposals, setProposals] = useState([]);
-  const [proposalToView, setProposalToView] = useState("");
+  const [proposalToView, setProposalToView] = useState("empty");
   const [selected, setSelected] = useState([]);
 
   const getAccountDetails = async () => {
@@ -23,7 +23,6 @@ function UserDashboard() {
     const details = res.data.details;
     context.changeAccountDetails(details);
     context.changeAccountType(details.account_type);
-    // console.log(details);
     setSelected([...details.proposals]);
   };
 
@@ -32,7 +31,6 @@ function UserDashboard() {
       headers: { Authorization: `Bearer ${localStorage.token}` },
     });
     const data = res.data.data;
-    // console.log(data);
     setProposals([...data]);
   };
 

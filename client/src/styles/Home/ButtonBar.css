@@ -40,6 +40,13 @@
   opacity: 0.9;
 }
 
-#login-bar-button {
+.login-bar-button {
   display: flex;
+}
+
+.login-bar-button .loader {
+  border: 2px solid #fff;
+  border-top: 2px solid #4285f4;
+  border-bottom: 2px solid #4285f4;
+  animation: spin 0.75s linear infinite;
 }

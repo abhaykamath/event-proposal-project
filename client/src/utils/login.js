@@ -30,7 +30,6 @@ const login = async (
     }
   } catch (error) {
     setLoading(false);
-    console.log(error.response);
     toastError(error.response.data.message);
   }
 };

@@ -6,6 +6,7 @@ function Home() {
   return (
     <div className="home-container">
       <div className="home-left-pane">
+        <div className="home-page-logo">EVENTURA</div>
         <h1>Welcome !!</h1>
         <h1>Let us help you</h1>
         <h1>make your next event</h1>
