@@ -6,6 +6,7 @@ const proposalSchema = new Schema({
   vendor: { type: Schema.Types.ObjectId, ref: "accounts" },
   vendor_name: { type: String },
   vendor_email: { type: String },
+  vendor_contact: { type: String },
   event_name: { type: String, required: true },
   event_place: { type: String, required: true },
   proposal_type: { type: String, required: true },
