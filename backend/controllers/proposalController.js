@@ -32,6 +32,7 @@ const createNewProposal = async (req, res) => {
       vendor: req.user._id,
       vendor_name: req.user.name,
       vendor_email: req.user.email,
+      vendor_contact: req.user.contact,
       ...req.body,
     });
     res.status(201);

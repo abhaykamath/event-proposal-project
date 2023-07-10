@@ -34,6 +34,7 @@ function UserProposals() {
         <div className="all-proposals-grid">
           {proposals.length !== 0
             ? proposals
+                .reverse()
                 .filter((proposal) => {
                   if (proposal._id !== selected[0]) return proposal;
                 })

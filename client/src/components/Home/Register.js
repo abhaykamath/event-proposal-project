@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../styles/Home/Register.css";
 
 function Register({
@@ -8,6 +8,9 @@ function Register({
   passwordRef,
   confirmPasswordRef,
 }) {
+  const [show, setShow] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
+
   return (
     <div className="enter-details">
       <div className="sign-form-header">Register your Account</div>
@@ -20,15 +23,31 @@ function Register({
       <div>
         <input ref={contactRef} placeholder="Contact" />
       </div>
-      <div>
-        <input type="password" ref={passwordRef} placeholder="Password" />
-      </div>
-      <div>
+      <div className="password">
         <input
-          type="password"
+          type={show ? "text" : "password"}
+          ref={passwordRef}
+          placeholder="Password"
+        />
+        <i
+          onClick={() => {
+            setShow((show) => !show);
+          }}
+          class="fa-solid fa-eye"
+        ></i>
+      </div>
+      <div className="password">
+        <input
+          type={showConfirm ? "text" : "password"}
           ref={confirmPasswordRef}
           placeholder="Confirm Password"
         />
+        <i
+          onClick={() => {
+            setShowConfirm((showConfirm) => !showConfirm);
+          }}
+          class="fa-solid fa-eye"
+        ></i>
       </div>
     </div>
   );

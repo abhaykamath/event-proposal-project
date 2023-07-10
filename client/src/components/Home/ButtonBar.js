@@ -51,6 +51,15 @@ function ButtonBar({
   const context = useAccountInfo();
   const navigate = useNavigate();
 
+  function validEmail(email) {
+    var validRegex = /^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/gm;
+    if (email.match(validRegex)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   function clearRegisterForm() {
     nameRef.current.value = "";
     emailRef.current.value = "";
@@ -119,6 +128,8 @@ function ButtonBar({
                 !confirmPasswordRef.current.value
               ) {
                 toastError("Please fill all fields");
+              } else if (!validEmail(emailRef.current.value)) {
+                toastError("Invalid email address");
               } else if (
                 passwordRef.current.value != confirmPasswordRef.current.value
               ) {
