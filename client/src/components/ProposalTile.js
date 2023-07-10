@@ -4,7 +4,7 @@ import "../styles/ProposalTile.css";
 
 function ProposalTile({ proposal, setProposalToView, selected }) {
   const navigate = useNavigate();
-  const { vendor_name, images, budget, event_place } = proposal;
+  const { vendor_name, event_name, images, budget, event_place } = proposal;
   return (
     <div
       className="proposal-tile"
@@ -26,18 +26,23 @@ function ProposalTile({ proposal, setProposalToView, selected }) {
       <div
         style={{
           backgroundColor: selected[0] === proposal._id ? "#34A853" : "",
-          color: selected[0] === proposal._id ? "white" : "",
         }}
         className="tile-info"
       >
-        <div>{vendor_name}</div>
-        <div>{new Intl.NumberFormat().format(budget) + "/-"}</div>
-        <div
-          style={{
-            color: selected[0] === proposal._id ? "white" : "",
-          }}
-        >
-          {event_place}
+        <div>{event_name}</div>
+        <div>
+          <span
+            style={{
+              fontWeight: "bold",
+            }}
+          >
+            Vendor :
+          </span>{" "}
+          {vendor_name}
+        </div>
+        <div>
+          <div>{event_place}</div>
+          <div>{new Intl.NumberFormat().format(budget) + "/-"}</div>
         </div>
       </div>
     </div>
