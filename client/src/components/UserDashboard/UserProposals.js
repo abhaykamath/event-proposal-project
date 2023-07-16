@@ -34,9 +34,11 @@ function UserProposals() {
         <div className="all-proposals-grid">
           {proposals.length !== 0
             ? proposals
-                .reverse()
                 .filter((proposal) => {
                   if (proposal._id !== selected[0]) return proposal;
+                })
+                .sort((a, b) => {
+                  return a.event_name < b.event_name ? -1 : 1;
                 })
                 .map((proposal, index) => {
                   return (
